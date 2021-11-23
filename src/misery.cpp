@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <vector>
+#include <minion.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
@@ -8,6 +10,9 @@
 
 int main()
 {
+    std::vector <Minion> badMinionContext(10);
+    std::vector <Minion> goodMinionContext(10);
+
     sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "misery");
 
     window.setFramerateLimit(60);
@@ -19,9 +24,16 @@ int main()
         ERR("Could not load texture from file!");
     }
 
-    sf::Sprite person;
-    person.setTexture(personTexture);
+    for (auto & x : badMinionContext)
+    {
+        x.get_sprite().setTexture(personTexture);
+    }
     
+    for (auto & x : goodMinionContext)
+    {
+        x.get_sprite().setTexture(personTexture);
+    }
+
     sf::Event event;
 
     while (window.isOpen())
@@ -35,7 +47,7 @@ int main()
         }
 
         window.clear(sf::Color::White);
-        window.draw(person);
+        
         window.display();
     }
 

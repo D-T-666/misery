@@ -2,7 +2,7 @@ CC=/usr/bin/g++
 INCLUDE=include/
 SRC=src/
 BIN=bin/
-CFLAGS=-lsfml-window -lsfml-audio -lsfml-graphics -lsfml-system
+CFLAGS=-lsfml-window -lsfml-audio -lsfml-graphics -lsfml-system -I $(INCLUDE)
 
 build:
 	@mkdir -p $(BIN)
