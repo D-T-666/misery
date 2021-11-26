@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <vector>
+#include <stdlib.h>
+#include <time.h>
 #include <minion.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
@@ -10,6 +12,8 @@
 
 int main()
 {
+    srand(time(NULL));
+
     std::vector <Minion> badMinionContext(10);
     std::vector <Minion> goodMinionContext(10);
 
@@ -27,14 +31,18 @@ int main()
     for (auto & x : badMinionContext)
     {
         x.get_sprite().setTexture(personTexture);
+        x.get_sprite().setPosition(sf::Vector2f(rand()%500, rand()%500));
     }
     
     for (auto & x : goodMinionContext)
     {
         x.get_sprite().setTexture(personTexture);
+        x.get_sprite().setPosition(sf::Vector2f(rand()%200, rand()%200));
     }
 
     sf::Event event;
+
+    sf::Clock clock;
 
     while (window.isOpen())
     {
@@ -46,8 +54,35 @@ int main()
             }
         }
 
-        window.clear(sf::Color::White);
-        
+        window.clear(sf::Color::Black);
+
+        for (auto & x : badMinionContext)
+        {
+            window.draw(x.get_sprite());
+            x.get_sprite().setColor(sf::Color::Red);
+
+            if (clock.getElapsedTime().asSeconds() > 0.3)
+            {
+                x.get_sprite().setPosition(sf::Vector2f(rand()%500, rand()%500));
+            }
+        }
+
+        for (auto & x : goodMinionContext)
+        {
+            x.get_sprite().setColor(sf::Color::Blue);
+            window.draw(x.get_sprite());
+
+            if (clock.getElapsedTime().asSeconds() > 0.3)
+            {
+                x.get_sprite().setPosition(sf::Vector2f(rand()%500, rand()%500));
+            }
+        }
+
+        if (clock.getElapsedTime().asSeconds() > 0.3)
+        {
+            clock.restart();
+        }
+
         window.display();
     }
 

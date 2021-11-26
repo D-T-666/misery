@@ -12,6 +12,7 @@ private:
 
 public:
 	Minion(const sf::Vector2f pos, const sf::Vector2f size) { this->set_pos(pos); this->set_size(size); };
+	Minion() { };
 
 	inline void get_pos(sf::Vector2f & pos) const { pos = sf::Vector2f(this->x, this->y); };
 	inline void set_pos(const sf::Vector2f pos) { this->x = pos.x; this->y = pos.y; };
