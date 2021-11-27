@@ -1,4 +1,5 @@
 #include <SFML/Graphics/Sprite.hpp>
+#include <SFML/System/Vector2.hpp>
 #include <stdio.h>
 #include <vector>
 #include <stdlib.h>
@@ -41,14 +42,12 @@ public:
 
 		for (auto & x : badMinionContext)
 		{
-			minionSprite.setTexture(personTexture);
-			minionSprite.setPosition(sf::Vector2f(rand()%500, rand()%500));
+			x.set_pos(sf::Vector2f(rand()%500, rand()%500));
 		}
 		
 		for (auto & x : goodMinionContext)
 		{
-			minionSprite.setTexture(personTexture);
-			minionSprite.setPosition(sf::Vector2f(rand()%200, rand()%200));
+			x.set_pos(sf::Vector2f(rand()%200, rand()%200));
 		}
 
 		minionSprite.setTexture(personTexture);
@@ -66,25 +65,29 @@ public:
 		if (clock.getElapsedTime().asSeconds() > 0.3)
 			window.clear(sf::Color::Black);
 
+		sf::Vector2<float> pos;
+
 		for (auto & x : badMinionContext)
 		{
+			x.get_pos(pos);
 			window.draw(minionSprite);
 			minionSprite.setColor(sf::Color::Red);
 
 			if (clock.getElapsedTime().asSeconds() > 0.3)
 			{
-				minionSprite.setPosition(sf::Vector2f(rand()%500, rand()%500));
+				minionSprite.setPosition(pos);
 			}
 		}
 
 		for (auto & x : goodMinionContext)
 		{
+			x.get_pos(pos);
 			minionSprite.setColor(sf::Color::Blue);
 			window.draw(minionSprite);
 
 			if (clock.getElapsedTime().asSeconds() > 0.3)
 			{
-				minionSprite.setPosition(sf::Vector2f(rand()%500, rand()%500));
+				minionSprite.setPosition(pos);
 			}
 		}
 
