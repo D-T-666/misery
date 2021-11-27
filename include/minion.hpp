@@ -23,7 +23,9 @@ public:
     inline void toggle_state(const int state) { this->state |= state; };
     inline bool get_state(const int state) const { return static_cast<bool>(this->state & state); };
 	
-	inline sf::Sprite & get_sprite(void) { return this->sprite; }; 
+	inline sf::Sprite & get_sprite(void) { return this->sprite; };
+
+	void update();
 
 	~Minion() {};
 };
