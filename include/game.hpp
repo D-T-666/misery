@@ -1,5 +1,6 @@
 #include "../include/minion.hpp"
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/System/Vector2.hpp>
@@ -14,16 +15,15 @@
 
 class Game {
 private:
-	int total_minions = 10;
-	int total_groups = 2;
-	Minion minions[2][10];
+	int total_minions = 80;
+	Minion minions[80];
 	sf::Color group_colors[2];
 
 	sf::RenderWindow window;
 	sf::Event event;
 
 	sf::Texture personTexture;
-	sf::Sprite minionSprite;
+	sf::CircleShape minionSprite;
 
 	sf::Clock clock, frameClock;
 

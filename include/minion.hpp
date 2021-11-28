@@ -6,9 +6,9 @@
 class Minion
 {
 private:
-	sf::Vector2<float> pos, vel;
-	float r; // size~
-	int state = false;
+	sf::Vector2<float> pos, vel, acc;
+	float r; // Radius
+	int state = 0;
 
 public:
 	Minion(const sf::Vector2f pos, const float size) { this->set_pos(pos); this->set_size(size); };
@@ -23,7 +23,10 @@ public:
 	inline void toggle_state(const int state) { this->state |= state; };
 	inline bool get_state(const int state) const { return static_cast<bool>(this->state & state); };
 
-	void update(Minion minions[], int &n, float dt);
+	void attract(Minion &minion);
+	void collide(Minion &minion);
+	void interact(Minion &minion);
+	void update(float dt);
 
 	~Minion() {};
 };
