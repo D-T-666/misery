@@ -6,7 +6,7 @@ CFLAGS=-lsfml-window -lsfml-audio -lsfml-graphics -lsfml-system -I $(INCLUDE) -s
 
 build:
 	@mkdir -p $(BIN)
-	@$(CC) $(SRC)/misery.cpp $(SRC)/minion.cpp $(CFLAGS) -o $(BIN)/misery
+	@$(CC) $(SRC)/misery.cpp $(SRC)/minion.cpp $(SRC)/game.cpp $(CFLAGS) -o $(BIN)/misery
 	@echo compiled successfully
 
 run:
