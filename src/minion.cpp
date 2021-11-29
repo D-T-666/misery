@@ -1,7 +1,5 @@
 #include "../include/minion.hpp"
 #include "../include/vec_utils.hpp"
-#include <SFML/System/Vector2.hpp>
-#include <cstdlib>
 #include <iostream>
 
 void Minion::collide(Minion &minion) {
